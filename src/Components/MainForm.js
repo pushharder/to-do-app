@@ -1,7 +1,12 @@
 import React from 'react';
 
-import { Form, Card, FormControl, ToggleButtonGroup } from 'react-bootstrap';
-import FilterButton from './FilterButton';
+import {
+  Form,
+  Card,
+  FormControl,
+  ToggleButtonGroup,
+  ToggleButton,
+} from 'react-bootstrap';
 import TodoList from './TodoList';
 
 function MainForm() {
@@ -10,10 +15,16 @@ function MainForm() {
       <Card.Title>Todo List</Card.Title>
       <div style={{ display: 'flex', marginBottom: 10 }}>
         <FormControl style={{ marginRight: 10 }} />
-        <ToggleButtonGroup type="radio" name="filter" defaultValue={1}>
-          <FilterButton text={'All'} />
-          <FilterButton text={'Active'} />
-          <FilterButton text={'Done'} />
+        <ToggleButtonGroup type="radio" name="filter" defaultValue={'All'}>
+          <ToggleButton value={'All'} variant="outline-info">
+            All
+          </ToggleButton>
+          <ToggleButton value={'Active'} variant="outline-info">
+            Active
+          </ToggleButton>
+          <ToggleButton value={'Done'} variant="outline-info">
+            Done
+          </ToggleButton>
         </ToggleButtonGroup>
       </div>
       <TodoList />
