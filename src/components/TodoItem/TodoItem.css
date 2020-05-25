@@ -4,6 +4,10 @@
   padding: 10px 20px;
 }
 
+.todo-item--bold {
+  font-weight: bold;
+}
+
 .todo-item__buttons-wrap {
   justify-self: flex-end;
   margin-left: auto;

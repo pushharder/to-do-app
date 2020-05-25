@@ -2,7 +2,7 @@ import React from 'react';
 import './Filter.css';
 import FilterCase from '../FilterCase';
 
-function Filter() {
+function Filter(props) {
   return (
     <div className={'filter'}>
       <input
@@ -10,9 +10,17 @@ function Filter() {
         placeholder={'Search...'}
       ></input>
       <div className="btn-group btn-group-toggle" data-toggle="buttons">
-        <FilterCase text="All" checked={true} />
-        <FilterCase text="Active" />
-        <FilterCase text="Done" />
+        {props.filterCases.map((filterCase, index) => (
+          <FilterCase
+            onClick={() => {
+              props.filterCaseChange(index);
+            }}
+            text={filterCase}
+            checked={index === props.currentCaseIndex}
+            index={index}
+            key={filterCase}
+          />
+        ))}
       </div>
     </div>
   );

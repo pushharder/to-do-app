@@ -1,12 +1,17 @@
 import React from 'react';
 import TodoItem from '../TodoItem';
 
-function TodoList() {
+function TodoList(props) {
   return (
     <ul className="list-group">
-      <TodoItem text={'Drink Coffe'}></TodoItem>
-      <TodoItem text={'Make Awesome App'}></TodoItem>
-      <TodoItem text={'Have a lunch'}></TodoItem>
+      {props.todoList.map((element) => (
+        <TodoItem
+          todoUnit={element}
+          key={element.text}
+          importantBtnClick={props.importantBtnClick}
+          doneBtnClick={props.doneBtnClick}
+        />
+      ))}
     </ul>
   );
 }
