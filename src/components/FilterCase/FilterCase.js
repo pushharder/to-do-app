@@ -2,7 +2,7 @@ import React from 'react';
 
 function FilterCase(props) {
   return (
-    <label class="btn btn-outline-info">
+    <label className="btn btn-outline-info">
       <input
         type="radio"
         name="options"

@@ -1,40 +1,26 @@
 import React from 'react';
+import './TodoItem.css';
 
 function TodoItem(props) {
   return (
-    <li
-      className={'list-group-item'}
-      style={{
-        display: 'flex',
-        alignItems: 'center',
-        padding: '10px 20px',
-      }}
-    >
+    <li className={'list-group-item todo-item'}>
       {props.text}
-      <span
-        style={{
-          justifySelf: 'flex-end',
-          marginLeft: 'auto',
-        }}
-      >
+      <span className={'todo-item__buttons-wrap'}>
         <button
           type="button"
-          className="btn btn-outline-danger"
-          style={{ width: 40, marginRight: 10 }}
+          className="btn btn-outline-danger todo-item__button"
         >
-          <i class="far fa-trash-alt"></i>
+          <i className="far fa-trash-alt"></i>
         </button>
         <button
           type="button"
-          className="btn btn-outline-warning"
-          style={{ width: 40, marginRight: 10 }}
+          className="btn btn-outline-warning todo-item__button"
         >
-          <i class="fas fa-exclamation"></i>
+          <i className="fas fa-exclamation"></i>
         </button>
         <button
           type="button"
-          className="btn btn-outline-success"
-          style={{ width: 40 }}
+          className="btn btn-outline-success todo-item__button"
         >
           <i className="fas fa-check"></i>
         </button>

@@ -4,7 +4,7 @@ import './App.css';
 
 function App() {
   return (
-    <div className="App" style={{ display: 'flex', justifyContent: 'center' }}>
+    <div className="app">
       <MainForm />
     </div>
   );

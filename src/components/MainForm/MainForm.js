@@ -1,6 +1,7 @@
 import React from 'react';
 import Filter from '../Filter';
 import TodoList from '../TodoList';
+import NewItem from '../NewItem';
 
 function MainForm() {
   return (
@@ -8,6 +9,7 @@ function MainForm() {
       <h1>Todo List</h1>
       <Filter />
       <TodoList />
+      <NewItem />
     </form>
   );
 }
