@@ -11,6 +11,9 @@ function TodoItem(props) {
       {props.todoUnit.text}
       <span className="todo-item__buttons-wrap">
         <button
+          onClick={() => {
+            props.removeItem(props.todoUnit.text);
+          }}
           type="button"
           className="btn btn-outline-danger todo-item__button"
         >

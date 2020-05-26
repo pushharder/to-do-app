@@ -10,7 +10,7 @@ class MainForm extends React.Component {
 
     this.state = {
       filter: {
-        text: null,
+        text: '',
         cases: ['All', 'Active', 'Done'],
         currentCaseIndex: 0,
       },
@@ -23,17 +23,28 @@ class MainForm extends React.Component {
   }
 
   getVisibleTodoList() {
+    const todoListFilteredByText = this.state.todoList.filter((todoUnit) =>
+      RegExp(this.state.filter.text).test(todoUnit.text)
+    );
+
     switch (this.state.filter.currentCaseIndex) {
       case 0:
-        return this.state.todoList;
+        return todoListFilteredByText;
       case 1:
-        return this.state.todoList.filter((todoUnit) => !todoUnit.done);
+        return todoListFilteredByText.filter((todoUnit) => !todoUnit.done);
       case 2:
-        return this.state.todoList.filter((todoUnit) => todoUnit.done);
+        return todoListFilteredByText.filter((todoUnit) => todoUnit.done);
       default:
         return this.state.todoList;
     }
   }
+
+  changeFilterText = (text) => {
+    let filter = this.state.filter;
+
+    filter.text = text;
+    this.setState({ filter });
+  };
 
   filterCaseChange = (index) => {
     let filter = this.state.filter;
@@ -60,6 +71,28 @@ class MainForm extends React.Component {
     this.setState({ todoList });
   };
 
+  addNewTodoUnit = (text) => {
+    if (this.state.todoList.some((todoUnit) => text === todoUnit.text)) {
+      alert('This item is already exists.');
+      return;
+    }
+
+    if (text !== '') {
+      const todoList = this.state.todoList;
+
+      todoList.push(new TodoUnit(text));
+      this.setState({ todoList });
+    }
+  };
+
+  removeItem = (text) => {
+    this.setState({
+      todoList: this.state.todoList.filter(
+        (todoUnit) => text !== todoUnit.text
+      ),
+    });
+  };
+
   render() {
     return (
       <form>
@@ -68,13 +101,15 @@ class MainForm extends React.Component {
           filterCases={this.state.filter.cases}
           currentCaseIndex={this.state.filter.currentCaseIndex}
           filterCaseChange={this.filterCaseChange}
+          changeFilterText={this.changeFilterText}
         />
         <TodoList
           todoList={this.getVisibleTodoList()}
           importantBtnClick={this.importantBtnClick}
           doneBtnClick={this.doneBtnClick}
+          removeItem={this.removeItem}
         />
-        <NewItem />
+        <NewItem addNewTodoUnit={this.addNewTodoUnit} />
       </form>
     );
   }

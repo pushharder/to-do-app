@@ -10,6 +10,7 @@ function TodoList(props) {
           key={element.text}
           importantBtnClick={props.importantBtnClick}
           doneBtnClick={props.doneBtnClick}
+          removeItem={props.removeItem}
         />
       ))}
     </ul>

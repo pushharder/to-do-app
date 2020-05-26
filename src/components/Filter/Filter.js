@@ -8,6 +8,9 @@ function Filter(props) {
       <input
         className={'form-control filter__text'}
         placeholder={'Search...'}
+        onInput={(e) => {
+          props.changeFilterText(e.target.value);
+        }}
       ></input>
       <div className="btn-group btn-group-toggle" data-toggle="buttons">
         {props.filterCases.map((filterCase, index) => (
