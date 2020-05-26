@@ -1,0 +1,23 @@
+.todo-item {
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+}
+
+.todo-item--bold {
+  font-weight: bold;
+}
+
+.todo-item__buttons-wrap {
+  justify-self: flex-end;
+  margin-left: auto;
+}
+
+.todo-item__button {
+  margin-right: 10px;
+  width: 40px;
+}
+
+.todo-item__button:last-child {
+  margin-right: 0;
+}
